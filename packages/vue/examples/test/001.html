@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test</title>
+    <script src="../../dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div @click="changeText">{{ ha.ha2}}</div>
+      <!-- <div>doubleCount：{{doubleCount}}</div> -->
+      <div @click="changeText">{{ test2 }}</div>
+    </div>
+    <script>
+      const { createApp, ref, toRefs, reactive, toRaw, effect } = Vue
+      // const tt = Vue
+      Vue.createApp({
+        setup() {
+          const test1 = reactive({
+            ba: 'ba',
+            ha: {
+              ha1: 'ha1',
+              ha2: 'ha2'
+            }
+          })
+          let test2 = ref([1,2,3])
+          effect(() => {
+            console.log('dddd')
+            // test = '123'
+          })
+          function changeText() {
+            console.log(1)
+            test2.value = [1,2,3,4]
+          }
+          return {
+            ...toRefs(test1),
+            test2,
+            changeText
+          }
+        }
+        // data: () => ({
+        //   count: [1,2]
+        // }),
+        // computed: {
+        //   doubleCount() {
+        //     return 222
+        //   }
+        // },
+        // methods: {
+        //   changeText() {
+        //     this.count = [1,2,3]
+        //   }
+        // },
+        // beforeCreate() {
+        //   console.log('beforeCreate')
+        // },
+        // created() {
+        //   console.log('created')
+        // },
+        // beforeMount() {
+        //   console.log('beforeMount')
+        // },
+        // mounted() {
+        //   alert('mounted')
+        //   console.log('mounted')
+        // },
+        // beforeUpdate() {
+        //   console.log('beforeUpdate')
+        // },
+        // updated() {
+        //   console.log('updated')
+        // },
+        // beforeDestroy() {
+        //   console.log('beforeDestroy')
+        // },
+        // destroyed() {
+        //   console.log('destroyed')
+        // }
+      }).mount("#app")
+      // console.log('tt', tt);
+      
+      // console.log(vue)
+      // vue.mount("#app")
+    </script>
+  </body>
+</html>
